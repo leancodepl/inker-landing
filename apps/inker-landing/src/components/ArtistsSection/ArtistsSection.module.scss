@@ -1,6 +1,7 @@
 .section {
   padding: 80px 20px;
   background: var(--color-bg-light);
+  overflow: hidden;
 
   @media (min-width: 768px) {
     padding: 120px 40px;
@@ -17,12 +18,13 @@
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
-    gap: 80px;
+    gap: 60px;
   }
 }
 
 .content {
   flex: 1;
+  min-width: 0;
 }
 
 .label {
@@ -75,47 +77,196 @@
 
 .visual {
   flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.badgeCloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  max-width: 360px;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  height: 280px;
 
   @media (min-width: 768px) {
-    max-width: 320px;
+    height: 560px;
   }
 }
 
-.styleBadge {
-  padding: 10px 20px;
-  border-radius: 24px;
-  font-size: 14px;
-  font-weight: 600;
+/* Desktop: two columns, seamless vertical loop (no gap between duplicated halves) */
+.desktopGallery {
+  display: none;
+  height: 100%;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.masonryWrapper {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: stretch;
+  height: 100%;
+}
+
+.columnMask {
+  flex: 1;
+  max-width: 200px;
+  min-width: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.verticalTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  will-change: transform;
+
+  &[data-direction='up'] {
+    animation: scrollUp 45s linear infinite;
+  }
+
+  &[data-direction='down'] {
+    animation: scrollDown 50s linear infinite;
+  }
+}
+
+.scrollGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Mobile: horizontal marquee */
+.mobileMarquee {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.horizontalTrack {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0;
+  width: max-content;
+  height: 100%;
+  align-items: center;
+  will-change: transform;
+  animation: scrollHorizontal 55s linear infinite;
+}
+
+.horizontalGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding-right: 12px;
+  flex-shrink: 0;
+}
+
+@keyframes scrollHorizontal {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
   background: var(--color-bg-card);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border);
-  transition:
-    border-color 0.2s ease,
-    background 0.2s ease;
+  height: auto;
 
-  &:nth-child(1) {
-    border-color: var(--color-brand);
-    color: var(--color-brand);
+  &[data-layout='horizontal'] {
+    flex-shrink: 0;
   }
+}
 
-  &:nth-child(3) {
-    border-color: var(--color-brand);
-    color: var(--color-brand);
+.image {
+  object-fit: cover;
+}
+
+/* Desktop vertical gallery: soften top & bottom */
+.fadeTop,
+.fadeBottom {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    display: block;
   }
+}
 
-  &:hover {
-    border-color: var(--color-brand);
-    background: rgba(255, 140, 0, 0.08);
+.fadeTop {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-bg-light), transparent);
+}
+
+.fadeBottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-bg-light), transparent);
+}
+
+/* Mobile horizontal marquee: soften start & end edges */
+.fadeStart,
+.fadeEnd {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 72px;
+  pointer-events: none;
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.fadeStart {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-light), transparent);
+}
+
+.fadeEnd {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-light), transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .verticalTrack,
+  .horizontalTrack {
+    animation: none;
   }
 }
