@@ -1,5 +1,6 @@
 .section {
   padding: 80px 20px;
+  background: var(--color-bg-light);
 
   @media (min-width: 768px) {
     padding: 120px 40px;
@@ -68,10 +69,13 @@
   background: var(--color-bg-light);
   border-radius: 12px;
   border: 1px solid var(--color-border);
-  transition: border-color 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 
   &:hover {
     border-color: var(--color-danger);
+    transform: translateY(-2px);
   }
 
   p {
@@ -89,7 +93,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(153, 27, 27, 0.15);
+  background: color-mix(in srgb, var(--color-danger-light) 10%, transparent);
   border-radius: 8px;
   color: var(--color-danger-light);
 }

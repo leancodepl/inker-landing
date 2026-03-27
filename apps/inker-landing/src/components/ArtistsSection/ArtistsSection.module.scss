@@ -1,10 +1,12 @@
+$spacing: 12px;
+
 .section {
   padding: 80px 20px;
   background: var(--color-bg-light);
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding: 120px 40px;
+    padding: 0 40px;
   }
 }
 
@@ -17,7 +19,7 @@
 
   @media (min-width: 768px) {
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     gap: 60px;
   }
 }
@@ -25,6 +27,10 @@
 .content {
   flex: 1;
   min-width: 0;
+
+  @media (min-width: 768px) {
+    padding: 120px 0;
+  }
 }
 
 .label {
@@ -81,26 +87,41 @@
   width: 100%;
   min-width: 0;
   overflow: hidden;
-  height: 280px;
+  height: 320px;
+  /* Full-bleed horizontal strip on small screens */
+  max-width: 100vw;
+
+  @media (max-width: 767px) {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
 
   @media (min-width: 768px) {
-    height: 560px;
+    height: auto;
+    align-self: stretch;
+    min-height: 0;
+    max-width: none;
+    margin-left: 0;
   }
 }
 
-/* Desktop: two columns, seamless vertical loop (no gap between duplicated halves) */
+/* Desktop: two columns, seamless vertical loop (no gap between duplicated halves).
+   Absolutely positioned so intrinsic gallery height does not define row height — the
+   visual column stretches to match the content column. */
 .desktopGallery {
   display: none;
   height: 100%;
 
   @media (min-width: 768px) {
     display: block;
+    position: absolute;
+    inset: 0;
   }
 }
 
 .masonryWrapper {
   display: flex;
-  gap: 12px;
+  gap: $spacing;
   justify-content: center;
   align-items: stretch;
   height: 100%;
@@ -108,7 +129,7 @@
 
 .columnMask {
   flex: 1;
-  max-width: 200px;
+  max-width: 256px;
   min-width: 0;
   overflow: hidden;
   height: 100%;
@@ -117,15 +138,14 @@
 .verticalTrack {
   display: flex;
   flex-direction: column;
-  gap: 0;
   width: 100%;
   will-change: transform;
 
-  &[data-direction='up'] {
+  &[data-direction="up"] {
     animation: scrollUp 45s linear infinite;
   }
 
-  &[data-direction='down'] {
+  &[data-direction="down"] {
     animation: scrollDown 50s linear infinite;
   }
 }
@@ -133,7 +153,8 @@
 .scrollGroup {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: $spacing;
+  padding-bottom: $spacing;
 }
 
 @keyframes scrollUp {
@@ -169,7 +190,6 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  gap: 0;
   width: max-content;
   height: 100%;
   align-items: center;
@@ -181,9 +201,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
-  padding-right: 12px;
+  gap: $spacing;
   flex-shrink: 0;
+  padding-bottom: $spacing;
 }
 
 @keyframes scrollHorizontal {
@@ -204,7 +224,7 @@
   background: var(--color-bg-card);
   height: auto;
 
-  &[data-layout='horizontal'] {
+  &[data-layout="horizontal"] {
     flex-shrink: 0;
   }
 }
@@ -220,48 +240,23 @@
   position: absolute;
   left: 0;
   right: 0;
-  height: 100px;
   pointer-events: none;
   z-index: 1;
 
   @media (min-width: 768px) {
     display: block;
+    height: 150px;
   }
 }
 
 .fadeTop {
   top: 0;
-  background: linear-gradient(to bottom, var(--color-bg-light), transparent);
+  background: linear-gradient(to bottom, color-mix(in srgb, var(--color-bg-light) 75%, transparent), transparent);
 }
 
 .fadeBottom {
   bottom: 0;
-  background: linear-gradient(to top, var(--color-bg-light), transparent);
-}
-
-/* Mobile horizontal marquee: soften start & end edges */
-.fadeStart,
-.fadeEnd {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 72px;
-  pointer-events: none;
-  z-index: 1;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-}
-
-.fadeStart {
-  left: 0;
-  background: linear-gradient(to right, var(--color-bg-light), transparent);
-}
-
-.fadeEnd {
-  right: 0;
-  background: linear-gradient(to left, var(--color-bg-light), transparent);
+  background: linear-gradient(to top, color-mix(in srgb, var(--color-bg-light) 75%, transparent), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
