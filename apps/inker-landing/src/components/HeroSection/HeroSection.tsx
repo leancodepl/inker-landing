@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { IPhoneMockup } from '../shared/IPhoneMockup/IPhoneMockup';
 import { StoreBadges } from '../shared/StoreBadges/StoreBadges';
 import styles from './HeroSection.module.scss';
@@ -13,6 +14,15 @@ const featureBadges = [
 export function HeroSection() {
   return (
     <section className={styles.hero}>
+      <Image
+        alt=""
+        className={styles.bgImage}
+        fill
+        priority
+        quality={75}
+        sizes="100vw"
+        src="/bg.png"
+      />
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.eyebrow}>Now Available</p>
