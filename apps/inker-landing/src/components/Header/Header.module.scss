@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: rgba(26, 26, 26, 0.85);
+  background: #101013d9;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }
@@ -39,7 +39,7 @@
   flex-direction: column;
   position: fixed;
   inset: 0;
-  background: rgba(26, 26, 26, 0.98);
+  background: #101013fa;
   justify-content: center;
   align-items: center;
   gap: 40px;

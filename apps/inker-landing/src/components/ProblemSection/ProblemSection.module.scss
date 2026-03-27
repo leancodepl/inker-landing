@@ -22,7 +22,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--color-text-secondary);
+  color: var(--color-danger-light);
   margin-bottom: 16px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .highlight {
-  color: var(--color-brand);
+  color: var(--color-danger-light);
 }
 
 .subtitle {
@@ -68,6 +68,11 @@
   background: var(--color-bg-light);
   border-radius: 12px;
   border: 1px solid var(--color-border);
+  transition: border-color 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-danger);
+  }
 
   p {
     font-size: 15px;
@@ -84,6 +89,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg-card);
+  background: rgba(153, 27, 27, 0.15);
   border-radius: 8px;
+  color: var(--color-danger-light);
 }
