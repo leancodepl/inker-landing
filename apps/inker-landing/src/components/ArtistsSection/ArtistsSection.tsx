@@ -10,72 +10,22 @@ const benefits = [
   "Industry networking",
 ]
 
-/** Curated Unsplash stock photos (tattoo / body art) — card height follows intrinsic image aspect ratio */
-const tattooStockImages = [
-  {
-    alt: "Detailed black and grey tattoo on arm",
-    src: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=520&h=680&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Tattoo artist at work in studio",
-    src: "https://images.unsplash.com/photo-1611501275019-9b5cda994e8d?w=520&h=440&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Floral tattoo design on skin",
-    src: "https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?w=520&h=600&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Traditional style tattoo",
-    src: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=520&h=520&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Tattoo studio workspace",
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?w=520&h=380&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Geometric tattoo close-up",
-    src: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=520&h=640&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Arm sleeve tattoo",
-    src: "https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=520&h=480&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Fine line tattoo",
-    src: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=520&h=560&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Japanese style tattoo art",
-    src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=520&h=400&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Tattoo session in progress",
-    src: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=520&h=700&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Bold tattoo ink on skin",
-    src: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=520&h=460&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Minimal line tattoo",
-    src: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=520&h=500&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Color tattoo artwork",
-    src: "https://images.unsplash.com/photo-1473091534298-04dcbce3278c?w=520&h=360&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Tattoo machine detail",
-    src: "https://images.unsplash.com/photo-1612349316228-5942a9b489c2?w=520&h=580&auto=format&fit=crop&q=80",
-  },
-  {
-    alt: "Blackwork tattoo pattern",
-    src: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=520&h=620&auto=format&fit=crop&q=80",
-  },
+/** Local gallery assets — card height follows intrinsic image aspect ratio */
+const tattooGalleryImages = [
+  { alt: "Tattoo portfolio image 1", src: "/images/01.png" },
+  { alt: "Tattoo portfolio image 2", src: "/images/02.png" },
+  { alt: "Tattoo portfolio image 3", src: "/images/03.png" },
+  { alt: "Tattoo portfolio image 4", src: "/images/04.png" },
+  { alt: "Tattoo portfolio image 5", src: "/images/05.png" },
+  { alt: "Tattoo portfolio image 6", src: "/images/06.png" },
+  { alt: "Tattoo portfolio image 7", src: "/images/07.png" },
+  { alt: "Tattoo portfolio image 8", src: "/images/08.png" },
+  { alt: "Tattoo portfolio image 9", src: "/images/09.png" },
+  { alt: "Tattoo portfolio image 10", src: "/images/10.jpg" },
 ]
 
-const columnA = tattooStockImages.filter((_, index) => index % 2 === 0)
-const columnB = tattooStockImages.filter((_, index) => index % 2 === 1)
+const columnA = tattooGalleryImages.filter((_, index) => index % 2 === 0)
+const columnB = tattooGalleryImages.filter((_, index) => index % 2 === 1)
 
 function VerticalColumn({ direction, images }: { direction: "down" | "up"; images: typeof columnA }) {
   return (
@@ -97,7 +47,7 @@ function VerticalColumn({ direction, images }: { direction: "down" | "up"; image
 }
 
 function MobileMarquee() {
-  const row = tattooStockImages
+  const row = tattooGalleryImages
 
   return (
     <div className={styles.mobileMarquee}>

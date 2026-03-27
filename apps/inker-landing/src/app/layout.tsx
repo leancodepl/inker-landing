@@ -11,6 +11,10 @@ export const metadata = {
   title: 'Inker — The Tattoo Industry. Connected.',
   description:
     'Inker is the platform built for tattoo artists and collectors. Discover artists. Book tattoos. Explore conventions. Find jobs. Connect with the global tattoo community.',
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    apple: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+  },
 };
 
 export default function RootLayout({
