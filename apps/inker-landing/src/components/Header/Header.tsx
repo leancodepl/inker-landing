@@ -16,25 +16,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <a aria-label="Inker home" className={styles.logo} href="/">
-          <svg
-            fill="none"
-            height="32"
-            viewBox="0 0 80 32"
-            width="80"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <text
-              fill="#FF8C00"
-              fontFamily="Georgia, 'Times New Roman', serif"
-              fontSize="28"
-              fontWeight="900"
-              letterSpacing="-0.5"
-              x="0"
-              y="26"
-            >
-              Inker
-            </text>
-          </svg>
+          <img alt="Inker" height={32} src="/logo.svg" width={110} />
         </a>
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ''}`}>

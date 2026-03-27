@@ -13,25 +13,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.brand}>
-          <svg
-            fill="none"
-            height="24"
-            viewBox="0 0 60 24"
-            width="60"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <text
-              fill="#FF8C00"
-              fontFamily="Georgia, 'Times New Roman', serif"
-              fontSize="22"
-              fontWeight="900"
-              letterSpacing="-0.5"
-              x="0"
-              y="20"
-            >
-              Inker
-            </text>
-          </svg>
+          <img alt="Inker" height={28} src="/logo.svg" width={96} />
         </div>
         <nav className={styles.links}>
           {footerLinks.map((link) => (
