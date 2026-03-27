@@ -1,5 +1,5 @@
 {
-  "name": "@inker-landing/source",
+  "name": "@leancodepl/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {},
@@ -10,6 +10,10 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@leancodepl/eslint-config": "10.1.2",
+    "@leancodepl/prettier-config": "10.1.2",
+    "@leancodepl/resolve-eslint-flat-config": "10.1.0",
+    "@leancodepl/stylelint-config": "10.1.2",
     "@eslint/js": "^9.8.0",
     "@next/eslint-plugin-next": "^16.1.6",
     "@nx/eslint": "22.6.2",
