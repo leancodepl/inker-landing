@@ -1,0 +1,88 @@
+.section {
+  padding: 80px 20px;
+
+  @media (min-width: 768px) {
+    padding: 120px 40px;
+  }
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.card {
+  text-align: center;
+  padding: 56px 24px;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    background: radial-gradient(
+      circle,
+      rgba(255, 140, 0, 0.1) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    padding: 80px 48px;
+  }
+}
+
+.label {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+  }
+}
+
+.highlight {
+  color: var(--color-brand);
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  margin: 0 auto 32px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.storeBadges {
+  justify-content: center;
+  position: relative;
+}

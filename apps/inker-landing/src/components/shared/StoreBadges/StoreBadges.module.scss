@@ -1,0 +1,22 @@
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.badge {
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border-radius: 6px;
+  overflow: hidden;
+
+  &:hover {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+
+  svg {
+    display: block;
+  }
+}
